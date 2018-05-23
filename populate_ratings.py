@@ -12,7 +12,6 @@ from analytics.models import Rating
 
 
 def create_rating(user_id, content_id, rating, timestamp):
-
     rating = Rating(user_id=user_id, movie_id=content_id, rating=decimal.Decimal(rating),
                     rating_timestamp=datetime.datetime.fromtimestamp(float(timestamp)))
     rating.save()
@@ -28,13 +27,14 @@ def download_ratings():
     print('download finished')
     return data.decode('utf-8')
 
+
 def delete_db():
     print('truncate db')
     Rating.objects.all().delete()
     print('finished truncate db')
 
-def populate():
 
+def populate():
     delete_db()
 
     ratings = download_ratings()
@@ -49,6 +49,7 @@ def populate():
             count = 0
         else:
             count += 1
+
 
 if __name__ == '__main__':
     print("Starting MovieGeeks Population script...")
