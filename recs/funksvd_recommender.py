@@ -77,7 +77,7 @@ class FunkSVDRecs(base_recommender):
                 user_bias = self.user_bias[user_id]
             elif int(user_id) in self.user_bias.keys():
                 user_bias = self.user_bias[int(user_id)]
-                print(f'it was an int {user_bias}')
+                print('it was an int {user_bias}')
 
             rating = float(user_bias + self.avg)
             result += rating
